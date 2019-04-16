@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['sergey.krupov@gmail.com']
 
   spec.summary       = 'Podspec push helper'
-  spec.description   = 'Podspec push helper'
+  spec.description   = 'Helps to push podspecs'
   spec.homepage      = 'https://github.com/SergeyKrupov/podspec_pusher'
   spec.license       = 'MIT'
 
@@ -40,8 +40,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'minitest', '~> 5.0'
 
-  spec.add_dependency 'thor'
+  spec.add_dependency 'thor', '~> 0.20.3'
   spec.add_dependency 'cocoapods', '~> 1.6.1'
-  spec.add_dependency 'git'
+  spec.add_dependency 'git', '~> 1.5.0'
 
 end
