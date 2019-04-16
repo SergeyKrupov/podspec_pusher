@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
 require "podspec_pusher"
+
+PodspecPusher::PusherCLI.start(ARGV)
