@@ -6,8 +6,8 @@ module PodspecPusher
 
   class PusherCLI < Thor
     desc 'podspec_pusher [repo] [podspec]', 'Push podspec'
-    def push(repo, podspec_file)
-      raise "No repo specified" unless repo
+    def push(podspecs_repo, podspec_file)
+      raise "No repo specified" unless podspecs_repo
       raise "No podspec specified" unless podspec_file
 
       podspec = Pod::Specification.from_file podspec_file
@@ -22,7 +22,7 @@ module PodspecPusher
 
       repo.add_tag new_tag_name
       repo.push'origin', new_tag_name
-      argv = CLAide::ARGV.new([repo, podspec, '--allow-warnings', '--skip-tests', '--no-overwrite'])
+      argv = CLAide::ARGV.new([podspecs_repo, podspec_file, '--allow-warnings', '--skip-tests', '--no-overwrite'])
       command = Pod::Command::Repo::Push.new(argv)
       command.run
     end
