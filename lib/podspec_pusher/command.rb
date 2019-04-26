@@ -6,7 +6,7 @@ module PodspecPusher
 
   class PusherCLI < Thor
     desc 'podspec_pusher push [repo] [podspec]', 'Push podspec'
-    def push(podspecs_repo, podspec_file)
+    def push(podspecs_repo, podspec_file=nil)
       raise 'No repo specified' unless podspecs_repo
 
       unless podspec_file
