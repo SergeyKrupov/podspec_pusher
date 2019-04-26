@@ -10,7 +10,7 @@ module PodspecPusher
       raise 'No repo specified' unless podspecs_repo
 
       unless podspec_file
-        podspecs = Dir.each_child(Dir.pwd).select { |name| in name.end_with?('.podspec') }
+        podspecs = Dir.each_child(Dir.pwd).select { |name| name.end_with?('.podspec') }
         raise 'Podspec needs to be specified explicitly' unless podspecs.count == 1
         podspec_file = podspecs.first
       end
