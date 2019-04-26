@@ -5,10 +5,15 @@ require 'git'
 module PodspecPusher
 
   class PusherCLI < Thor
-    desc 'podspec_pusher [repo] [podspec]', 'Push podspec'
+    desc 'podspec_pusher push [repo] [podspec]', 'Push podspec'
     def push(podspecs_repo, podspec_file)
-      raise "No repo specified" unless podspecs_repo
-      raise "No podspec specified" unless podspec_file
+      raise 'No repo specified' unless podspecs_repo
+
+      unless podspec_file
+        podspecs = Dir.each_child(Dir.pwd).select { |name| in name.end_with?('.podspec') }
+        raise 'Podspec needs to be specified explicitly' unless podspecs.count == 1
+        podspec_file = podspecs.first
+      end
 
       podspec = Pod::Specification.from_file podspec_file
       repo = Git.open Dir.pwd
